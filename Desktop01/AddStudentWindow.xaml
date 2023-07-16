@@ -1,0 +1,178 @@
+﻿<Window x:Class="Desktop01.AddStudentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+          xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:Desktop01"
+        mc:Ignorable="d"
+        Title="{Binding Title,UpdateSourceTrigger=PropertyChanged}" Height="450" Width="800"
+        
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        BorderThickness="5"
+        
+        
+        
+        
+        
+        
+        >
+    <Window.DataContext>
+        <local:AddStudentVM/>
+    </Window.DataContext>
+
+
+
+      
+        
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Left Section-->
+        <Border  Padding="30" CornerRadius="25 0 0 25" BorderBrush="White" BorderThickness="3">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#4871f7" Offset="0"/>
+                    <GradientStop Color="#038aff" Offset="0.3"/>
+                    <GradientStop Color="#323278" Offset="0.6"/>
+
+                    <GradientStop Color="#284387" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel VerticalAlignment="Center">
+
+                <TextBlock  TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Text="Let's get you set up" Foreground="White" />
+                <Ellipse Width="120" Height="120" Stroke="White" StrokeThickness="5" Style="{StaticResource EllipseStyle}" Margin="20 30 20 10">
+                            <Ellipse.Fill>
+
+                                <ImageBrush ImageSource="{Binding SelectedImagePath}"/>
+                                
+                            </Ellipse.Fill>
+                </Ellipse>
+                <StackPanel  Margin="0 10" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource circleButton}"
+                             Command="{Binding UploadPhotoCommand, UpdateSourceTrigger=PropertyChanged}"
+                                Width="30"
+                                Height="30"
+                               >
+
+
+                            <Icon:PackIconMaterial Kind="UploadOutline" Width="20" Height="20"  HorizontalAlignment="Center"/>
+                        </Button>
+                        <TextBlock Style="{StaticResource text}" Text="UPLOAD PHOTO" Foreground="White"></TextBlock>
+                </StackPanel>
+
+
+
+
+
+
+
+                </StackPanel>
+
+          
+            
+           
+               
+
+
+
+           
+        </Border>
+
+        <!--Input Section-->
+        <Border Grid.Column="1" Padding="20"   CornerRadius="0 25 25 0" BorderBrush="White" BorderThickness="3">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#4871f7" Offset="0"/>
+                    <GradientStop Color="#038aff" Offset="0.3"/>
+                    <GradientStop Color="#323278" Offset="0.6"/>
+
+                    <GradientStop Color="#284387" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel>
+                <TextBlock Margin="5" FontSize="20" TextAlignment="Center" Text="{Binding Title,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Width="200" Style="{StaticResource text}"/>
+
+                <Grid>
+
+
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="First Name" Style="{StaticResource text}"/>
+                        <TextBlock Grid.Row="1" Text="Last Name" Style="{StaticResource text}"/>
+                        <TextBlock Grid.Row="2" Text="Age" Style="{StaticResource text}"/>
+                        <TextBlock Grid.Row="3" Text="Date of Birth" Style="{StaticResource text}"/>
+                        <TextBlock Grid.Row="4" Text="GPA" Style="{StaticResource text}"/>
+
+
+                        <TextBox Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" />
+
+
+                        <TextBox  Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" />
+                        <TextBox Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2"/>
+                        <!--<TextBox Text="{Binding Dateofbirth, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="3"/>-->
+                        <DatePicker Style="{StaticResource ModernDatePicker}" SelectedDate="{Binding Dob, StringFormat='dd/mm/yyyy', UpdateSourceTrigger=PropertyChanged}" Text="{Binding Dateofbirth}" Grid.Column="1" Grid.Row="3"/>
+                        <TextBox  Text="{Binding Gpa, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4"/>
+
+
+
+
+
+
+                        <Grid Grid.Column="1" Grid.Row="6" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+
+
+                            <Button Style="{StaticResource mainButton}"  Command="{Binding SaveCommand}" Content="Save" HorizontalAlignment="Left" Width="112" Margin="99,29,0,10" Grid.ColumnSpan="2" />
+                        </Grid>
+                        <Grid Grid.Column="0" Grid.Row="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Style="{StaticResource mainButton}"   Command="{Binding CancelCommand}" Content="Cancel" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="112" Margin="19,27,0,10"  />
+                            
+
+
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+            </StackPanel>
+           
+        </Border>
+        <!--<Rectangle HorizontalAlignment="Left" Height="434" Margin="345,0,0,0" Stroke="Black" VerticalAlignment="Center" Width="10" Grid.ColumnSpan="2" Fill="Black"/>-->
+
+    </Grid>
+
+</Window>
